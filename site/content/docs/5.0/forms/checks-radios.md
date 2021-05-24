@@ -199,7 +199,7 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 
 ## Reverse
 
-Put your checkboxes and radios on the opposite side with the `.form-check-reverse` modifier class.
+Put your checkboxes, radios, and switches on the opposite side with the `.form-check-reverse` modifier class.
 
 {{< example >}}
 <div class="form-check form-check-reverse">
@@ -213,6 +213,11 @@ Put your checkboxes and radios on the opposite side with the `.form-check-revers
   <label class="form-check-label" for="reverseCheck2">
     Disabled reverse checkbox
   </label>
+</div>
+
+<div class="form-check form-switch form-check-reverse">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+  <label class="form-check-label" for="flexSwitchCheckReverse">Rerverse switch checkbox input</label>
 </div>
 {{< /example >}}
 

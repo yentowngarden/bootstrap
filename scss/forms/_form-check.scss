@@ -141,6 +141,16 @@
       }
     }
   }
+  
+  &.form-check-reverse {
+    padding-right: $form-check-padding-start;
+    padding-left: 0;
+    
+    .form-check-input {
+      margin-right: $form-switch-padding-start * -1;
+      margin-left: 0;
+    }
+  }
 }
 
 .form-check-inline {
