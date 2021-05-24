@@ -1,35 +1,33 @@
-import { sanitizeHtml, DefaultAllowlist } from '../util/sanitizer'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.1): util/messages.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+import TemplateFactory from '../util/template-factory'
 
-class Messages {
-  constructor() {
-    this._messages = new Set()
+class Messages extends Map {
+  constructor(templateConfig) {
+    super()
+    this._templateConfig = templateConfig
   }
 
-  add(message) {
-    this._messages.add(sanitizeHtml(message, DefaultAllowlist, null))
+  set(key, message) {
+    const config = { ...this._templateConfig, ...{ content: { div: message } } }
+    super.set(key, new TemplateFactory(config))
   }
 
-  has() {
-    return this._messages.size > 0
-  }
-
-  clear() {
-    this._messages.clear()
-  }
-
-  getAll() {
-    return [...this._messages]
+  getAllAsTextArray() {
+    return Array.from(this.values()).map(message => message.getContent().join(', '))
   }
 
   getFirst() {
-    return this.getAll()[0] || null
+    const first = this.values().next()
+    return first ? first.value : null
+  }
+
+  count() {
+    return this.size
   }
 }
 
