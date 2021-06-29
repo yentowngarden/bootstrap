@@ -220,6 +220,13 @@ or on a button **outside the alert** using the `data-bs-target` as demonstrated 
 
 ### Methods
 
+You can create an alert instance with the alert constructor, for example:
+```js
+var myAlert = document.getElementById('myAlert')
+var bsAlert = new bootstrap.Alert(myAlert)
+```
+This makes an alert listen for click events on descendant elements which have the `data-bs-dismiss="alert"` attribute. (Not necessary when using the data-api’s auto-initialization.)
+
 {{< bs-table >}}
 | Method | Description |
 | --- | --- |
@@ -229,9 +236,11 @@ or on a button **outside the alert** using the `data-bs-target` as demonstrated 
 | `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialised. You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(element)</code>. |
 {{< /bs-table >}}
 
+Basic usage:
+
 ```js
 var alertNode = document.querySelector('.alert')
-var alert = bootstrap.Alert.getInstance(alertNode)
+var alert = bootstrap.Alert.getOrCreateInstance(alertNode)
 alert.close()
 ```
 
